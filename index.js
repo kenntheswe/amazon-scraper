@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
   res.send("Welcome to Amazon Scraper API");
 })
 
-app.get("/products/productId", async (req, res) => {
+app.get("/products/:productId", async (req, res) => {
   const { productId } = req.params;
 
   try {
@@ -25,7 +25,7 @@ app.get("/products/productId", async (req, res) => {
   }
 });
 
-app.get("/products/productId/reviews", async (req, res) => {
+app.get("/products/:productId/reviews", async (req, res) => {
   const { productId } = req.params;
 
   try {
