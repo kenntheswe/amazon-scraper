@@ -12,6 +12,7 @@ app.use(express.json());
 app.get("/", (req, res) => {  res.send("Welcome to Amazon Scraper API");
 })
 
+// GET product information
 app.get("/products/:productId", async (req, res) => {
   const { productId } = req.params;
 
@@ -24,6 +25,7 @@ app.get("/products/:productId", async (req, res) => {
   }
 });
 
+// GET product reviews
 app.get("/products/:productId/reviews", async (req, res) => {
   const { productId } = req.params;
 
@@ -36,6 +38,7 @@ app.get("/products/:productId/reviews", async (req, res) => {
   }
 });
 
+// GET product offers
 app.get("/products/:productId/offers", async (req, res) => {
   const { productId } = req.params;
 
@@ -48,6 +51,7 @@ app.get("/products/:productId/offers", async (req, res) => {
   }
 });
 
+// GET product search results
 app.get("/search/:searchQuery", async (req, res) => {
   const { searchQuery } = req.params;
 
