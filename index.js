@@ -4,7 +4,7 @@ const request = require("request-promise");
 const app = express();
 const PORT = process.env.PORT || 5555;
 
-const generateScraperUrl = (apiKey) => `https://api.scraperapi.co.jp?api_key=${apiKey}&autoparse=true`;
+const generateScraperUrl = (apiKey) => `https://api.scraperapi.com?api_key=${apiKey}&autoparse=true`;
 
 app.use(express.json());
 
@@ -17,7 +17,7 @@ app.get("/products/:productId", async (req, res) => {
   const { api_key } = req.query;
 
   try {
-    const response = await request(`${generateScraperUrl(api_key)}&url=https://www.amazon.co.jp/dp/${productId}`);
+    const response = await request(`${generateScraperUrl(api_key)}&url=https://www.amazon.com/dp/${productId}`);
 
     res.json(JSON.parse(response));
   } catch (error) {
@@ -31,7 +31,7 @@ app.get("/products/:productId/reviews", async (req, res) => {
   const { api_key } = req.query;
 
   try {
-    const response = await request(`${generateScraperUrl(api_key)}&url=https://www.amazon.co.jp/product-review/${productId}`);
+    const response = await request(`${generateScraperUrl(api_key)}&url=https://www.amazon.com/product-reviews/${productId}`);
 
     res.json(JSON.parse(response));
   } catch (error) {
@@ -45,7 +45,7 @@ app.get("/products/:productId/offers", async (req, res) => {
   const { api_key } = req.query;
 
   try {
-    const response = await request(`${generateScraperUrl(api_key)}&url=https://www.amazon.co.jp/gp/offer-listing/${productId}`);
+    const response = await request(`${generateScraperUrl(api_key)}&url=https://www.amazon.com/gp/offer-listing/${productId}`);
 
     res.json(JSON.parse(response));
   } catch (error) {
@@ -59,7 +59,7 @@ app.get("/search/:searchQuery", async (req, res) => {
   const { api_key } = req.query;
 
   try {
-    const response = await request(`${generateScraperUrl(api_key)}&url=https://www.amazon.co.jp/s?k=${searchQuery}`);
+    const response = await request(`${generateScraperUrl(api_key)}&url=https://www.amazon.com/s?k=${searchQuery}`);
 
     res.json(JSON.parse(response));
   } catch (error) {
